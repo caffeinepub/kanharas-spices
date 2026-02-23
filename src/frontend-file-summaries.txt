@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup defining all routes for the e-commerce site (home, products, product detail, cart, checkout, order confirmation).",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component that renders the Header, main content area with Outlet, and Footer on all pages.",
+  "frontend/src/components/Header.tsx": "Site header displaying KanhaRas Spices branding with logo, navigation links, and shopping cart icon with item count badge.",
+  "frontend/src/components/Footer.tsx": "Footer component with brand information, quick links, and attribution including caffeine.ai link with UTM tracking.",
+  "frontend/src/components/ProductCard.tsx": "Reusable product card component displaying spice image, name, description, price, and view details button with proper typed routing using params.",
+  "frontend/src/pages/ProductCatalog.tsx": "Product catalog page with hero banner, search functionality, and responsive grid of spice products with loading states.",
+  "frontend/src/pages/ProductDetail.tsx": "Individual product detail page showing full product information, large image, quantity selector, and add to cart functionality.",
+  "frontend/src/pages/Cart.tsx": "Shopping cart page displaying cart items with quantity controls, remove functionality, and order summary with checkout button.",
+  "frontend/src/pages/Checkout.tsx": "Checkout page with customer information form (contact and shipping address), order summary sidebar, and sessionStorage-based data passing to confirmation page.",
+  "frontend/src/pages/OrderConfirmation.tsx": "Order confirmation page displaying success message and next steps, retrieving order data from sessionStorage.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including product fetching, cart management, and product initialization with seed data.",
+  "frontend/src/index.css": "Global styles with warm earth-tone OKLCH color system for spice brand aesthetic in both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom spice-themed colors, Playfair Display serif font, and design tokens.",
+  "frontend/src/main.tsx": "Application entry point with QueryClient, InternetIdentityProvider, ThemeProvider, and Toaster setup."
+}

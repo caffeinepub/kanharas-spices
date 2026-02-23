@@ -1,0 +1,194 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "KanhaRas Spices E-commerce Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create product catalog page displaying all spices with filtering and search capabilities",
+      "acceptanceCriteria": [
+        "Products are displayed in a grid layout with product images",
+        "Each product card shows spice name, price, and brief description",
+        "Products can be filtered or searched",
+        "Product data is stored and retrieved from the backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProductCatalog.tsx",
+          "operation": "create",
+          "description": "Create product catalog page component that fetches products using backend.getAllProducts() and displays them in a responsive grid. Include search input and filter controls. Each product card displays image from frontend/public/assets/generated, name, price, and brief description. Add click handlers to navigate to product detail pages."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create reusable product card component that displays product image, name, price (formatted from bigint cents to currency), and truncated description. Include 'View Details' button that navigates to product detail page using product ID."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /products that renders the ProductCatalog page component. Wire the catalog page into the application routing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement individual product detail pages with full information and add-to-cart functionality",
+      "acceptanceCriteria": [
+        "Clicking a product navigates to its detail page",
+        "Detail page displays full product information",
+        "Users can select quantity and add to cart from detail page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProductDetail.tsx",
+          "operation": "create",
+          "description": "Create product detail page that uses productId from route params to fetch product data via backend.getProductById(). Display full-size product image from frontend/public/assets/generated, complete description, price, and availability status. Include quantity selector (number input) and 'Add to Cart' button that calls backend.addItemToCart()."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /products/:id that renders the ProductDetail page component with dynamic product ID parameter."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build shopping cart system with add, update, remove, and total calculation features",
+      "acceptanceCriteria": [
+        "Users can add products to cart from catalog or detail pages",
+        "Cart displays all added items with quantities and prices",
+        "Users can update quantities or remove items from cart",
+        "Cart shows subtotal and total amount",
+        "Cart state persists across page navigation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Cart.tsx",
+          "operation": "create",
+          "description": "Create cart page that fetches cart items using backend.getCart() and enriches them by fetching product details for each item. Display cart items in a list with product images from frontend/public/assets/generated, names, individual prices, quantities (with increment/decrement controls), and line totals. Show cart subtotal and total. Include 'Remove' buttons that call backend.addItemToCart() with quantity 0. Add 'Proceed to Checkout' button."
+        },
+        {
+          "path": "frontend/src/components/CartIcon.tsx",
+          "operation": "create",
+          "description": "Create cart icon component for header that displays cart item count badge. Include click handler to navigate to /cart page. Fetch cart count from backend.getCart() or use context state."
+        },
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "create",
+          "description": "Create custom hook that manages cart state, provides functions to add items, update quantities, remove items, and calculate totals. Interact with backend cart methods and handle state synchronization."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for /cart that renders the Cart page component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create checkout flow with customer information collection and order confirmation",
+      "acceptanceCriteria": [
+        "Checkout form collects name, address, phone, and email",
+        "Order summary displays all cart items and total",
+        "Form validates required fields before submission",
+        "Successful order displays confirmation with order details"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Checkout.tsx",
+          "operation": "create",
+          "description": "Create checkout page with form collecting customer name, shipping address (street, city, state, postal code), phone, and email. Display order summary section showing cart items fetched via backend.getCart() with enriched product details and total amount. Implement form validation for required fields. On submission, navigate to order confirmation page with order data."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmation.tsx",
+          "operation": "create",
+          "description": "Create order confirmation page displaying success message, order summary with customer information and ordered items, and order total. Include 'Continue Shopping' button that navigates back to product catalog."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routes for /checkout and /order-confirmation that render their respective page components."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Display KanhaRas Spices brand name prominently in header across all pages",
+      "acceptanceCriteria": [
+        "Brand name appears in the header/logo area",
+        "Brand name is visible on all pages",
+        "Typography reflects brand identity"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create header component displaying 'KanhaRas Spices' brand name with logo image from frontend/public/assets/generated/kanharas-logo.dim_400x400.png. Include navigation links to product catalog and cart. Use elegant typography that conveys quality and authenticity. Make brand name/logo clickable to navigate to home/catalog page."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout wrapper component that includes Header component at the top and renders children content below. This ensures header appears on all pages."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all route components with the Layout component to ensure header with brand name appears on every page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Design warm, inviting visual theme with earth tones and organic textures reflecting traditional spice markets",
+      "acceptanceCriteria": [
+        "Color palette uses warm earth tones appropriate for a spice brand",
+        "Typography is clean and readable while conveying premium quality",
+        "Layout feels organic and inviting",
+        "Visual style is consistent across all pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define custom CSS variables for warm earth tone color palette (terracotta, warm browns, golden yellows, deep oranges, cream). Set base typography styles using elegant serif or refined sans-serif fonts that convey quality. Apply organic textures and subtle patterns where appropriate."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom color palette matching spice brand identity (warmEarth, spiceRed, turmericYellow, cumin brown, etc.). Configure custom font families for brand typography. Add custom spacing and border radius values for organic, inviting layouts."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Wire generated spice product images and brand logo into the application",
+      "acceptanceCriteria": [
+        "Generated images are placed in frontend/public/assets/generated directory",
+        "Images are properly referenced in product catalog and detail pages",
+        "Logo appears in header/navigation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update header to reference logo image using path /assets/generated/kanharas-logo.dim_400x400.png. Ensure logo is displayed with appropriate sizing and positioning."
+        },
+        {
+          "path": "frontend/src/pages/ProductCatalog.tsx",
+          "operation": "modify",
+          "description": "Add hero section at top of catalog page using hero banner image from /assets/generated/spices-hero.dim_1920x600.png. Position banner with appropriate height and centering. Ensure product cards reference product images from /assets/generated/ directory using the imageUrl from backend product data."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Update product card to render product images using /assets/generated/ path prefix combined with imageUrl from product data. Handle image loading states and add alt text with product names."
+        },
+        {
+          "path": "frontend/src/pages/ProductDetail.tsx",
+          "operation": "modify",
+          "description": "Update detail page to display full-size product image using /assets/generated/ path prefix with imageUrl from product data. Ensure proper image sizing and aspect ratio."
+        }
+      ]
+    }
+  ]
+}

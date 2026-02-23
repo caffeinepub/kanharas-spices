@@ -1,0 +1,158 @@
+{
+  "kind": "build_request",
+  "title": "Create e-commerce website for KanhaRas Spices",
+  "projectName": "KanhaRas Spices",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a product catalog page that displays all available spices with images, names, prices, and descriptions",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "All type of spices I want to sell"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Products are displayed in a grid layout with product images",
+        "Each product card shows spice name, price, and brief description",
+        "Products can be filtered or searched",
+        "Product data is stored and retrieved from the backend"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement individual product detail pages that show complete information about each spice including full description, pricing, and availability",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "I want to sell spices on my website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking a product navigates to its detail page",
+        "Detail page displays full product information",
+        "Users can select quantity and add to cart from detail page"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a shopping cart system that allows customers to add spices, adjust quantities, and view their cart total",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "I want to sell spices on my website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add products to cart from catalog or detail pages",
+        "Cart displays all added items with quantities and prices",
+        "Users can update quantities or remove items from cart",
+        "Cart shows subtotal and total amount",
+        "Cart state persists across page navigation"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a checkout flow that collects customer shipping information and displays order summary",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "create a online selling website for me"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout form collects name, address, phone, and email",
+        "Order summary displays all cart items and total",
+        "Form validates required fields before submission",
+        "Successful order displays confirmation with order details"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Display the brand name 'KanhaRas Spices' prominently in the header/navigation across all pages",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Brand Name: KanhaRas Spices"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Brand name appears in the header/logo area",
+        "Brand name is visible on all pages",
+        "Typography reflects brand identity"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Design a warm, inviting visual theme that reflects traditional spice markets with earth tones, organic textures, and elegant typography that conveys quality and authenticity",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses warm earth tones appropriate for a spice brand",
+        "Typography is clean and readable while conveying premium quality",
+        "Layout feels organic and inviting",
+        "Visual style is consistent across all pages"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Render generated spice product images and brand logo as static assets in frontend/public/assets/generated",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images are placed in frontend/public/assets/generated directory",
+        "Images are properly referenced in product catalog and detail pages",
+        "Logo appears in header/navigation"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use single-actor Motoko architecture for backend",
+    "Use React with TypeScript and Tailwind CSS for frontend",
+    "Do not modify immutable frontend paths like useInternetIdentity hooks or ui components"
+  ],
+  "nonGoals": [
+    "Payment gateway integration",
+    "User authentication or account creation",
+    "Inventory management system",
+    "Order tracking after purchase",
+    "Admin dashboard for managing products"
+  ],
+  "imageRequirements": {
+    "required": [
+      "KanhaRas Spices brand logo with traditional spice motifs, warm earth tones (kanharas-logo.dim_400x400.png)",
+      "Turmeric powder in rustic bowl, warm yellow tones (turmeric-powder.dim_800x800.png)",
+      "Red chili powder in traditional container, vibrant red (chili-powder.dim_800x800.png)",
+      "Cumin seeds in wooden spoon, brown earthy tones (cumin-seeds.dim_800x800.png)",
+      "Coriander seeds in clay pot, green-brown tones (coriander-seeds.dim_800x800.png)",
+      "Garam masala blend in ornate bowl, mixed brown tones (garam-masala.dim_800x800.png)",
+      "Black pepper in rustic setting, dark black grains (black-pepper.dim_800x800.png)",
+      "Hero banner image showing various colorful spices in traditional market setting (spices-hero.dim_1920x600.png)"
+    ],
+    "edits": []
+  }
+}
